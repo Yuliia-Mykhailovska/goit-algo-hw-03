@@ -1,15 +1,17 @@
 import random
-
 def get_numbers_ticket(min, max, quantity):
-    
-    if min<1 or max>1000 or min>=max or quantity<min or quantity>(max-min):
-        print("Invalid parameters.")
+    try:
+        if min>=1 and max<=1000:
+            lottery_numbers = set()
+            while len(lottery_numbers)<quantity:
+                lottery_numbers.add(random.randint(min, max))
+        return sorted(list(lottery_numbers))
+    except:
         return []
-
-    return sorted(random.sample(list(range(min, max+1)), quantity))
-
-
-print("Ваші лотерейні числа:", get_numbers_ticket(1,1000,6))
+     
+        
+lottery_numbers = get_numbers_ticket(1, 1000, 6)
+print("Your numbers:", lottery_numbers)
     
 
    
